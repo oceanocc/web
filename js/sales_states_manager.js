@@ -2,7 +2,7 @@ $(function()
 {
     function FilterSales(agent_id, from, to, sales)
     {
-        return sales.filter(sale => sale.agent_id == agent_id && sale.columns[2] >= from && sale.columns[2] <= to);
+        return sales.filter(sale => sale.agent_id == agent_id && sale.fecha_encuesta >= from && sale.fecha_encuesta <= to);
     }
 
     var sales = GetSales();
@@ -45,12 +45,17 @@ $(function()
         $('.notifications').empty();
         $.each(filtered_sales, function(index, sale) 
         {
-            let columns = "";
-            for(let col of sale.columns)
-            {
-                columns += '<td>' + col + '</td>';
-            }
-            $('#results_table tbody').append('<tr>' + columns + '</tr>');
+            $('#results_table tbody').append(`
+                <tr>
+                    <td>${sale.agent_id}</td>
+                    <td>${sale.dn}</td>
+                    <td>${sale.status}</td>
+                    <td>${sale.fecha_encuesta}</td>
+                    <td>${sale.fecha_activacion}</td>
+                    <td>${sale.fecha_alta}</td>
+                    <td>${sale.fecha_baja}</td>
+                </tr>`
+            );
 
         });
     });
