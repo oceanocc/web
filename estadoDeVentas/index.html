@@ -59,14 +59,28 @@
             <div class="container">
                 <h2>Consulta de Ventas</h2>
                 <div class="mt-2 notifications"></div>
-                <div class="row my-4">
-                    <div class="col-lg-10">
-                        <input class="form-control" type="text" id="agent_id" placeholder="Ingrese su identificaci&oacute;n">
+                <form id="search">
+                    <div class="row mt-4">
+                        <div class="col-lg-6">Identificaci&oacute;n</div>
+                        <div class="col-lg-2">Desde</div>
+                        <div class="col-lg-2">Hasta</div>
+                        <div class="col-lg-2"></div>
                     </div>
-                    <div class="col-lg-2">
-                        <button class="btn btn-primary w-100" id="search">Buscar</button>
+                    <div class="row mb-4">
+                        <div class="col-lg-6">
+                            <input class="form-control" type="text" id="agent_id" placeholder="Ingrese su identificaci&oacute;n">
+                        </div>
+                        <div class="col-lg-2">
+                            <input type="date" id="from" class="form-control">
+                        </div>
+                        <div class="col-lg-2">
+                            <input type="date" id="to" class="form-control">
+                        </div>
+                        <div class="col-lg-2">
+                            <button type="submit" class="btn btn-primary w-100">Buscar</button>
+                        </div>
                     </div>
-                </div>
+                </form>
                 <table id="results_table" class="table">
                     <thead>
                         <tr>
