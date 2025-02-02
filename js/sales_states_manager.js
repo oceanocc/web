@@ -27,6 +27,7 @@ $(function()
             $('.notifications').append('<div class="alert alert-info" role="alert">No se encontraron ventas para el agente con identificación ' + agent_id + '</div>');
             return;
         }
+        $('.notifications').empty();
         $.each(filtered_sales, function(index, sale) 
         {
             let columns = "";
