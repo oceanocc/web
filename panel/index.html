@@ -81,13 +81,14 @@
                     <div class="mt-2 notifications"></div>
                     <form id="search">
                         <div class="row mt-4">
-                            <div class="col-lg-6">Identificaci&oacute;n</div>
+                            <div class="col-lg-4">Identificaci&oacute;n</div>
                             <div class="col-lg-2">Desde</div>
                             <div class="col-lg-2">Hasta</div>
                             <div class="col-lg-2"></div>
+                            <div class="col-lg-2"></div>
                         </div>
                         <div class="row mb-4">
-                            <div class="col-lg-6">
+                            <div class="col-lg-4">
                                 <input class="form-control" type="text" id="agent_id" placeholder="Ingrese su identificaci&oacute;n">
                             </div>
                             <div class="col-lg-2">
@@ -98,6 +99,9 @@
                             </div>
                             <div class="col-lg-2">
                                 <button type="submit" class="btn btn-primary w-100">Buscar</button>
+                            </div>
+                            <div class="col-lg-2">
+                                <button class="btn btn-secondary w-100" onclick="ExportTableToCSV('#results_table')">Descargar</button>
                             </div>
                         </div>
                     </form>
@@ -124,7 +128,7 @@
             <section class="tab-pane fade show" id="tab_horas" role="tabpanel" aria-labelledby="tab_horas_btn">
                 <div class="container py-4">
                     <h2>Horas</h2>
-                    <p class="mb-4">Aqu&iacute; podr&aacute;s ver el estado en el que se encuentran tus ventas.</p>
+                    <p class="mb-4">Aqu&iacute; podr&aacute;s ver los reportes de horas de conexi&oacute;n.</p>
                     
                     <div class="mt-2">
                         <ul>
@@ -145,7 +149,25 @@
 
             <!-- Tab Ventas -->
             <section class="tab-pane fade show" id="tab_ventas" role="tabpanel" aria-labelledby="tab_ventas_btn">
-                3
+                <div class="container py-4">
+                    <h2>Ventas</h2>
+                    <p class="mb-4">Aqu&iacute; podr&aacute;s ver las ventas realizadas.</p>
+                    
+                    <div class="mt-2">
+                        <ul>
+                            <li>
+                                <a href="#" target="_blank">
+                                    Ir al formulario de registro de Ventas
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" target="_blank">
+                                    Ver reporte formulario de Ventas
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </section>
         </div>
         
@@ -176,8 +198,9 @@
         <!-- Bootstrap core JS-->
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
+
         <script src="../js/scripts.js"></script>
+        <script src="../js/download_csv.js"></script>
         <script src="../js/sales_states.js"></script>
         <script src="../js/sales_states_manager.js"></script>
         <script>
