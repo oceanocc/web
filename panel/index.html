@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
-        <title>Estado de Ventas - OceanoCC</title>
+        <title>Panel - OceanoCC</title>
         <link rel="icon" href="../assets/img/favicon.png" type="image/x-icon">
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="../assets/favicon.png" />
@@ -44,9 +44,9 @@
                         <div class="d-flex align-items-center h-100">
                             <div class="">
                                 <!-- Masthead Heading-->
-                                <h2 class="text-uppercase mb-4">Estados de Ventas de Agentes</h2>
+                                <h2 class="text-uppercase mb-4">Panel de OceanoCC</h2>
                                 <p class="font-weight-light mb-0">
-                                    Aqu&iacute; podr&aacute;s ver el estado de tus ventas y sus &uacute;ltimas actualizaciones.
+                                    Aqu&iacute; podr&aacute;s ver todos los reportes y enlaces disponibles.
                                 </p>
                             </div>
                         </div>
@@ -54,49 +54,82 @@
                 </div>
             </div>
         </header>
-        <!-- Portfolio Section-->
-        <section class="page-section portfolio" id="portfolio">
-            <div class="container">
-                <h2>Consulta de Ventas</h2>
-                <div class="mt-2 notifications"></div>
-                <form id="search">
-                    <div class="row mt-4">
-                        <div class="col-lg-6">Identificaci&oacute;n</div>
-                        <div class="col-lg-2">Desde</div>
-                        <div class="col-lg-2">Hasta</div>
-                        <div class="col-lg-2"></div>
-                    </div>
-                    <div class="row mb-4">
-                        <div class="col-lg-6">
-                            <input class="form-control" type="text" id="agent_id" placeholder="Ingrese su identificaci&oacute;n">
-                        </div>
-                        <div class="col-lg-2">
-                            <input type="date" id="from" class="form-control">
-                        </div>
-                        <div class="col-lg-2">
-                            <input type="date" id="to" class="form-control">
-                        </div>
-                        <div class="col-lg-2">
-                            <button type="submit" class="btn btn-primary w-100">Buscar</button>
-                        </div>
-                    </div>
-                </form>
-                <table id="results_table" class="table">
-                    <thead>
-                        <tr>
-                            <th>DN</th>
-                            <th>Estado</th>
-                            <th>Fecha de venta</th>
-                            <th>Fecha de activaci&oacute;n</th>
-                            <th>Fecha de alta</th>
-                            <th>Fecha de baja</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
+        <!-- Nav -->
+        <header class="bg-white py-2">
+            <div class="container d-flex align-items-center flex-column">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="tab_estado_ventas_btn" data-bs-toggle="tab" data-bs-target="#tab_estado_ventas" type="button" role="tab" aria-controls="tab_estado_ventas" aria-selected="true">Estado de Ventas</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="tab_horas_btn" data-bs-toggle="tab" data-bs-target="#tab_horas" type="button" role="tab" aria-controls="tab_horas" aria-selected="true">Horas</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="tab_ventas_btn" data-bs-toggle="tab" data-bs-target="#tab_ventas" type="button" role="tab" aria-controls="tab_ventas" aria-selected="true">Ventas</button>
+                    </li>
+                </ul>
             </div>
-        </section>
+        </header>
+        <!-- Tabs content-->
+        <div class="tab-content">
+
+            <!-- Tab Estado de Ventas -->
+            <section class="tab-pane fade show active" id="tab_estado_ventas" role="tabpanel" aria-labelledby="tab_estado_ventas_btn">
+                <div class="container py-4">
+                    <h2>Estado de Ventas</h2>
+                    <p class="mb-4">Aqu&iacute; podr&aacute;s ver el estado en el que se encuentran tus ventas.</p>
+                    <div class="mt-2 notifications"></div>
+                    <form id="search">
+                        <div class="row mt-4">
+                            <div class="col-lg-6">Identificaci&oacute;n</div>
+                            <div class="col-lg-2">Desde</div>
+                            <div class="col-lg-2">Hasta</div>
+                            <div class="col-lg-2"></div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-lg-6">
+                                <input class="form-control" type="text" id="agent_id" placeholder="Ingrese su identificaci&oacute;n">
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="date" id="from" class="form-control">
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="date" id="to" class="form-control">
+                            </div>
+                            <div class="col-lg-2">
+                                <button type="submit" class="btn btn-primary w-100">Buscar</button>
+                            </div>
+                        </div>
+                    </form>
+                    <table id="results_table" class="table">
+                        <thead>
+                            <tr>
+                                <th>ID de agente</th>
+                                <th>DN</th>
+                                <th>Estado</th>
+                                <th>Fecha de venta</th>
+                                <th>Fecha de activaci&oacute;n</th>
+                                <th>Fecha de alta</th>
+                                <th>Fecha de baja</th>
+                                <th>D&iacute;as de exportaci&oacute;n</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Tab Horas -->
+            <section class="tab-pane fade show" id="tab_horas" role="tabpanel" aria-labelledby="tab_horas_btn">
+                2
+            </section>
+
+            <!-- Tab Ventas -->
+            <section class="tab-pane fade show" id="tab_ventas" role="tabpanel" aria-labelledby="tab_ventas_btn">
+                3
+            </section>
+        </div>
         
         <!-- Footer-->
         <footer class="footer text-center">
