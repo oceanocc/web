@@ -54,6 +54,7 @@ $(function()
                     <td>${sale.fecha_activacion}</td>
                     <td>${sale.fecha_alta}</td>
                     <td>${sale.fecha_baja}</td>
+                    <td>${sale.dias_exportacion}</td>
                 </tr>`
             );
 
