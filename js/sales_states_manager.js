@@ -1,8 +1,13 @@
 $(function()
 {
-    function FilterSales(agent_id, from, to, sales)
+    function FilterSales(agent_id, password, from, to, sales)
     {
-        return sales.filter(sale => sale.agent_id == agent_id && sale.fecha_encuesta >= from && sale.fecha_encuesta <= to);
+        return sales.filter(sale => 
+            sale.agent_id == agent_id
+            && sale.password == password
+            && sale.fecha_encuesta >= from
+            && sale.fecha_encuesta <= to
+        );
     }
 
     var sales = GetSales();
@@ -11,6 +16,7 @@ $(function()
     {
         e.preventDefault();
         var agent_id = $('#agent_id').val();
+        var password = $('#password').val();
         var from = $('#from').val();
         var to = $('#to').val();
 
@@ -18,6 +24,12 @@ $(function()
         {
             $('.notifications').empty();
             $('.notifications').append('<div class="alert alert-warning" role="alert">Por favor, ingrese su identificación</div>');
+            return;
+        }
+        if (password == "")
+        {
+            $('.notifications').empty();
+            $('.notifications').append('<div class="alert alert-warning" role="alert">Por favor, ingrese su contrase&ntilde;a</div>');
             return;
         }
         if (from == "")
@@ -33,7 +45,7 @@ $(function()
             return;
         }
 
-        var filtered_sales = FilterSales(agent_id, from, to, sales);
+        var filtered_sales = FilterSales(agent_id, password, from, to, sales);
         $('#results_table tbody').empty();
 
         if (filtered_sales.length == 0)

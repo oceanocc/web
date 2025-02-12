@@ -59,13 +59,10 @@
             <div class="container d-flex align-items-center flex-column">
                 <ul class="nav nav-tabs" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="tab_estado_ventas_btn" data-bs-toggle="tab" data-bs-target="#tab_estado_ventas" type="button" role="tab" aria-controls="tab_estado_ventas" aria-selected="true">Estado de Ventas</button>
+                        <button class="nav-link active" id="tab_links_btn" data-bs-toggle="tab" data-bs-target="#tab_links" type="button" role="tab" aria-controls="tab_links" aria-selected="true">Enlaces</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="tab_horas_btn" data-bs-toggle="tab" data-bs-target="#tab_horas" type="button" role="tab" aria-controls="tab_horas" aria-selected="true">Horas</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="tab_ventas_btn" data-bs-toggle="tab" data-bs-target="#tab_ventas" type="button" role="tab" aria-controls="tab_ventas" aria-selected="true">Ventas</button>
+                        <button class="nav-link" id="tab_estado_ventas_btn" data-bs-toggle="tab" data-bs-target="#tab_estado_ventas" type="button" role="tab" aria-controls="tab_estado_ventas" aria-selected="true">Estado de Ventas</button>
                     </li>
                 </ul>
             </div>
@@ -73,23 +70,79 @@
         <!-- Tabs content-->
         <div class="tab-content">
 
+            <!-- Tab Enlaces -->
+            <section class="tab-pane fade show active" id="tab_links" role="tabpanel" aria-labelledby="tab_links_btn">
+                <div class="container py-4">
+                    <h2>Vicidal</h2>
+                    <div class="mt-2">
+                        <ul>
+                            <li>
+                                <a href="https://pbx01-oceanocc.ddns.net" target="_blank">
+                                    Vicidial PBX01
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="container py-4">
+                    <h2>Horas</h2>
+                    <div class="mt-2">
+                        <ul>
+                            <li>
+                                <a href="https://pbx01-oceanocc.ddns.net/vicidial/AST_agent_time_detail.php" target="_blank">
+                                    Ver reporte de Horas de Agentes (Vicidial PBX01) (Solo supervisores)
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://pbx01-oceanocc.ddns.net/vicidial/AST_agent_performance_detail.php" target="_blank">
+                                    Ver reporte de Horas Diario de Agentes (Vicidial PBX01) (Solo supervisores)
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="container py-4">
+                    <h2>Ventas</h2>
+                    <div class="mt-2">
+                        <ul>
+                            <li>
+                                <a href="https://docs.google.com/forms/d/e/1FAIpQLSf9zgLvNtvDRIefTcq8yZfH3kv1ADsm_-2BYPytcDgO-V3XfA/viewform?usp=header" target="_blank">
+                                    Ir al formulario de registro de Ventas
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://docs.google.com/spreadsheets/d/199JvuQzRGZjMI3a7iutX9h2OnX6H-I9CPoAqxgwgUlo/edit?resourcekey=&gid=723151116#gid=723151116" target="_blank">
+                                    Ver reporte formulario de Ventas (Solo supervisores)
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
             <!-- Tab Estado de Ventas -->
-            <section class="tab-pane fade show active" id="tab_estado_ventas" role="tabpanel" aria-labelledby="tab_estado_ventas_btn">
+            <section class="tab-pane fade show" id="tab_estado_ventas" role="tabpanel" aria-labelledby="tab_estado_ventas_btn">
                 <div class="container py-4">
                     <h2>Estado de Ventas</h2>
                     <p class="mb-4">Aqu&iacute; podr&aacute;s ver el estado en el que se encuentran tus ventas.</p>
                     <div class="mt-2 notifications"></div>
                     <form id="search">
                         <div class="row mt-4">
-                            <div class="col-lg-4">Identificaci&oacute;n</div>
+                            <div class="col-lg-2">Identificaci&oacute;n</div>
+                            <div class="col-lg-2">Contrase&ntilde;a</div>
                             <div class="col-lg-2">Desde</div>
                             <div class="col-lg-2">Hasta</div>
                             <div class="col-lg-2"></div>
                             <div class="col-lg-2"></div>
                         </div>
                         <div class="row mb-4">
-                            <div class="col-lg-4">
+                            <div class="col-lg-2">
                                 <input class="form-control" type="text" id="agent_id" placeholder="Ingrese su identificaci&oacute;n">
+                            </div>
+                            <div class="col-lg-2">
+                                <input class="form-control" type="password" id="password">
                             </div>
                             <div class="col-lg-2">
                                 <input type="date" id="from" class="form-control">
@@ -124,51 +177,6 @@
                 </div>
             </section>
 
-            <!-- Tab Horas -->
-            <section class="tab-pane fade show" id="tab_horas" role="tabpanel" aria-labelledby="tab_horas_btn">
-                <div class="container py-4">
-                    <h2>Horas</h2>
-                    <p class="mb-4">Aqu&iacute; podr&aacute;s ver los reportes de horas de conexi&oacute;n.</p>
-                    
-                    <div class="mt-2">
-                        <ul>
-                            <li>
-                                <a href="https://pbx01-oceanocc.ddns.net/vicidial/AST_agent_time_detail.php" target="_blank">
-                                    Ver reporte de Horas de Agentes (Vicidial PBX01) (Solo supervisores)
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://pbx01-oceanocc.ddns.net/vicidial/AST_agent_performance_detail.php" target="_blank">
-                                    Ver reporte de Horas Diario de Agentes (Vicidial PBX01) (Solo supervisores)
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Tab Ventas -->
-            <section class="tab-pane fade show" id="tab_ventas" role="tabpanel" aria-labelledby="tab_ventas_btn">
-                <div class="container py-4">
-                    <h2>Ventas</h2>
-                    <p class="mb-4">Aqu&iacute; podr&aacute;s ver las ventas realizadas.</p>
-                    
-                    <div class="mt-2">
-                        <ul>
-                            <li>
-                                <a href="https://docs.google.com/forms/d/e/1FAIpQLSf9zgLvNtvDRIefTcq8yZfH3kv1ADsm_-2BYPytcDgO-V3XfA/viewform?usp=header" target="_blank">
-                                    Ir al formulario de registro de Ventas
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://docs.google.com/spreadsheets/d/199JvuQzRGZjMI3a7iutX9h2OnX6H-I9CPoAqxgwgUlo/edit?resourcekey=&gid=723151116#gid=723151116" target="_blank">
-                                    Ver reporte formulario de Ventas (Solo supervisores)
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
         </div>
         
         <!-- Footer-->
