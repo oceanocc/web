@@ -12,7 +12,7 @@ $(function()
 
     var sales = GetSales();
 
-    $('#search').submit(function(e)
+    $('#search_sales_states').submit(function(e)
     {
         e.preventDefault();
         var agent_id = $('#agent_id').val();
