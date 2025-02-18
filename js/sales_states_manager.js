@@ -1,12 +1,23 @@
 $(function()
 {
+    function TransformESDate(date)
+    {
+        const [day, month, year] = String(date).split('/').map(Number);
+        return new Date(year, month - 1, day);
+    }
+    function TransformDate(date)
+    {
+        const [year, month, day] = String(date).split('-').map(Number);
+        return new Date(year, month - 1, day);
+    }
+    
     function FilterSales(agent_id, password, from, to, sales)
     {
         return sales.filter(sale => 
             sale.agent_id == agent_id
             && sale.password == password
-            && sale.fecha_encuesta >= from
-            && sale.fecha_encuesta <= to
+            && TransformESDate(sale.fecha_encuesta) >= TransformDate(from)
+            && TransformESDate(sale.fecha_encuesta) <= TransformDate(to)
         );
     }
 
