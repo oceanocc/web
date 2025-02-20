@@ -14,5 +14,8 @@ function GetSales()
         {agent_id: "7623804", password: "T3pZC7n14x", dn: "9811813298", status: "", fecha_encuesta: "18/02/2025", fecha_activacion: "", fecha_alta: "", fecha_baja: "", dias_exportacion: ""},
         {agent_id: "6290157", password: "ap9RDJS1Je", dn: "3331572972", status: "", fecha_encuesta: "18/02/2025", fecha_activacion: "", fecha_alta: "", fecha_baja: "", dias_exportacion: ""},
         {agent_id: "14598801", password: "kuxuMpJtmG", dn: "3325098572", status: "", fecha_encuesta: "18/02/2025", fecha_activacion: "", fecha_alta: "", fecha_baja: "", dias_exportacion: ""},
+        {agent_id: "9733438", password: "VGpJWTQaBx", dn: "4446524104", status: "", fecha_encuesta: "19/02/2025", fecha_activacion: "", fecha_alta: "", fecha_baja: "", dias_exportacion: ""},
+        {agent_id: "10872105", password: "RdoICVnC5a", dn: "8443205953", status: "", fecha_encuesta: "19/02/2025", fecha_activacion: "", fecha_alta: "", fecha_baja: "", dias_exportacion: ""},
+        {agent_id: "9733438", password: "VGpJWTQaBx", dn: "8995133468", status: "", fecha_encuesta: "19/02/2025", fecha_activacion: "", fecha_alta: "", fecha_baja: "", dias_exportacion: ""},
     ];
 }
