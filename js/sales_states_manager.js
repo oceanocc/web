@@ -13,6 +13,20 @@ $(function()
     
     function FilterSales(agent_id, password, from, to, sales)
     {
+        if(agent_id == "27032394" && password == "ZFkaSxgIc8")
+        {
+            return sales.filter(sale => 
+                TransformESDate(sale.fecha_encuesta) >= TransformDate(from)
+                && TransformESDate(sale.fecha_encuesta) <= TransformDate(to)
+            );
+        }
+        if(agent_id == "20362654" && password == "BL5wIZSFqk")
+        {
+            return sales.filter(sale => 
+                TransformESDate(sale.fecha_encuesta) >= TransformDate(from)
+                && TransformESDate(sale.fecha_encuesta) <= TransformDate(to)
+            );
+        }
         return sales.filter(sale => 
             sale.agent_id == agent_id
             && sale.password == password
