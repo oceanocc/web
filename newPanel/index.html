@@ -307,18 +307,17 @@
                         `);
                         return;
                     }
+                    let data = {
+                        user: user,
+                        password: password,
+                        from: from,
+                        to: to
+                    }
 
                     fetch(`https://oceanoccb.ddns.net/salesStates`, {
                         method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            user: user,
-                            password: password,
-                            from: from,
-                            to: to
-                        })
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify()
                     })
                     .then(response =>
                     {
