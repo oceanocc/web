@@ -185,6 +185,7 @@
                                 <th>Fecha de venta</th>
                                 <th>Fecha de activaci&oacute;n</th>
                                 <th>Fecha de alta</th>
+                                <th>Fecha de actualizac&oacute;n</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -309,10 +310,10 @@
                         $.each(response.data, function(index, row) 
                         {
                             $('#results_table tbody').append(`
-                                <tr row-id="${row.id}">
+                                <tr>
                                     <td>${row.usuario}</td>
                                     <td>${row.dn}</td>
-                                    <td>${row.status}</td>
+                                    <td>${row.status == null ? '' : row.status}</td>
                                     <td>${row.fecha_encuesta == null ? '' : row.fecha_encuesta}</td>
                                     <td>${row.fecha_activacion == null ? '' : row.fecha_activacion}</td>
                                     <td>${row.fecha_alta == null ? '' : row.fecha_alta}</td>
