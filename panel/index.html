@@ -317,7 +317,7 @@
                                     <td>${row.fecha_venta == null ? '' : row.fecha_venta}</td>
                                     <td>${row.fecha_activacion == null ? '' : row.fecha_activacion}</td>
                                     <td>${row.fecha_alta == null ? '' : row.fecha_alta}</td>
-                                    <td>${transformarFecha(row.fecha_actualizacion)}</td>
+                                    <td>${row.fecha_actualizacion == null ? '' : transformarFecha(row.fecha_actualizacion)}</td>
                                 </tr>`
                             );
 
