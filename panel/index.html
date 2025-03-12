@@ -157,16 +157,16 @@
                         </div>
                         <div class="row mb-4">
                             <div class="col-lg-2">
-                                <input class="form-control" type="text" id="agent_id" placeholder="Ingrese su identificaci&oacute;n">
+                                <input class="form-control" type="text" id="agent_id" placeholder="Ingrese su identificaci&oacute;n" required>
                             </div>
                             <div class="col-lg-2">
-                                <input class="form-control" type="password" id="password">
+                                <input class="form-control" type="password" id="password" required>
                             </div>
                             <div class="col-lg-2">
-                                <input type="date" id="from" class="form-control">
+                                <input type="date" id="from" class="form-control" required>
                             </div>
                             <div class="col-lg-2">
-                                <input type="date" id="to" class="form-control">
+                                <input type="date" id="to" class="form-control" required>
                             </div>
                             <div class="col-lg-2">
                                 <button type="submit" class="btn btn-primary w-100">Buscar</button>
@@ -185,6 +185,7 @@
                                 <th>Fecha de venta</th>
                                 <th>Fecha de activaci&oacute;n</th>
                                 <th>Fecha de alta</th>
+                                <th>Fecha de actualizac&oacute;n</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -225,10 +226,118 @@
 
         <script src="../js/scripts.js"></script>
         <script src="../js/download_csv.js"></script>
-        <script src="../js/sales_states.js"></script>
-        <script src="../js/sales_states_manager.js"></script>
         <script>
             document.getElementById('year').textContent = new Date().getFullYear();
+            $(function()
+            {
+                function transformarFecha(fechaISO)
+                {
+                    const fecha = new Date(fechaISO);
+                
+                    const año = fecha.getFullYear();
+                    const mes = String(fecha.getMonth() + 1).padStart(2, '0'); // Añade 1 al mes porque es 0-indexado
+                    const dia = String(fecha.getDate()).padStart(2, '0');
+                    const horas = String(fecha.getHours()).padStart(2, '0');
+                    const minutos = String(fecha.getMinutes()).padStart(2, '0');
+                    const segundos = String(fecha.getSeconds()).padStart(2, '0');
+                
+                    return `${año}-${mes}-${dia} ${horas}:${minutos}:${segundos}`;
+                }
+
+                function configurarFechas()
+                {
+                    // Obtiene la fecha actual
+                    const hoy = new Date();
+                
+                    // Obtiene el primer día del mes actual
+                    const primerDiaMes = new Date(hoy.getFullYear(), hoy.getMonth(), 1);
+                
+                    // Formatea las fechas a YYYY-MM-DD (formato requerido por <input type="date">)
+                    const hoyFormateado = hoy.toISOString().slice(0, 10);
+                    const primerDiaMesFormateado = primerDiaMes.toISOString().slice(0, 10);
+                
+                    // Selecciona los inputs 'from' y 'to' y les asigna los valores formateados
+                    $('input[type="date"][name="from"]').val(primerDiaMesFormateado);
+                    $('input[type="date"][name="to"]').val(hoyFormateado);
+                }
+                configurarFechas();
+
+                // Leer
+                $('#search_sales_states').submit(function(e)
+                {
+                    e.preventDefault();
+                    var user = $('#search_sales_states #agent_id').val();
+                    var password = $('#search_sales_states #password').val();
+                    var from = $('#search_sales_states #from').val();
+                    var to = $('#search_sales_states #to').val();
+
+                    let data = {
+                        user: user,
+                        password: password,
+                        from: from,
+                        to: to
+                    }
+
+                    fetch(`https://oceanoccb.ddns.net/salesStates`, {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify(data)
+                    })
+                    .then(response =>
+                    {
+                        if(response.ok)
+                            return response.json();
+                        else
+                            throw 'Error al solicitar los estados de ventas';
+                    })
+                    .then(response =>
+                    {
+                        $('#results_table tbody').empty();
+
+                        if (response.data.length == 0)
+                        {
+                            $('.notifications').empty();
+                            $('.notifications').append(
+                            `
+                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                    No se encontraron ventas en el rango de tiempo establecido
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            `);
+                            return;
+                        }
+                        $('.notifications').empty();
+                        $.each(response.data, function(index, row) 
+                        {
+                            $('#results_table tbody').append(`
+                                <tr>
+                                    <td>${row.usuario}</td>
+                                    <td>${row.dn}</td>
+                                    <td>${row.status == null ? '' : row.status}</td>
+                                    <td>${row.fecha_venta == null ? '' : row.fecha_venta}</td>
+                                    <td>${row.fecha_activacion == null ? '' : row.fecha_activacion}</td>
+                                    <td>${row.fecha_alta == null ? '' : row.fecha_alta}</td>
+                                    <td>${transformarFecha(row.fecha_actualizacion)}</td>
+                                </tr>`
+                            );
+
+                        });
+                    })
+                    .catch(error =>
+                    {
+                        $('.notifications').empty();
+                        $('.notifications').append(
+                        `
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                ${error}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        `);
+                    });
+                });
+
+            });
+
         </script>
     </body>
 </html>
