@@ -157,16 +157,16 @@
                         </div>
                         <div class="row mb-4">
                             <div class="col-lg-2">
-                                <input class="form-control" type="text" id="agent_id" placeholder="Ingrese su identificaci&oacute;n">
+                                <input class="form-control" type="text" id="agent_id" placeholder="Ingrese su identificaci&oacute;n" required>
                             </div>
                             <div class="col-lg-2">
-                                <input class="form-control" type="password" id="password">
+                                <input class="form-control" type="password" id="password" required>
                             </div>
                             <div class="col-lg-2">
-                                <input type="date" id="from" class="form-control">
+                                <input type="date" id="from" class="form-control" required>
                             </div>
                             <div class="col-lg-2">
-                                <input type="date" id="to" class="form-control">
+                                <input type="date" id="to" class="form-control" required>
                             </div>
                             <div class="col-lg-2">
                                 <button type="submit" class="btn btn-primary w-100">Buscar</button>
@@ -317,7 +317,7 @@
                     fetch(`https://oceanoccb.ddns.net/salesStates`, {
                         method: 'POST',
                         headers: {'Content-Type': 'application/json'},
-                        body: JSON.stringify()
+                        body: JSON.stringify(data)
                     })
                     .then(response =>
                     {
