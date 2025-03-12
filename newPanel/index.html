@@ -229,6 +229,20 @@
             document.getElementById('year').textContent = new Date().getFullYear();
             $(function()
             {
+                function transformarFecha(fechaISO)
+                {
+                    const fecha = new Date(fechaISO);
+                
+                    const año = fecha.getFullYear();
+                    const mes = String(fecha.getMonth() + 1).padStart(2, '0'); // Añade 1 al mes porque es 0-indexado
+                    const dia = String(fecha.getDate()).padStart(2, '0');
+                    const horas = String(fecha.getHours()).padStart(2, '0');
+                    const minutos = String(fecha.getMinutes()).padStart(2, '0');
+                    const segundos = String(fecha.getSeconds()).padStart(2, '0');
+                
+                    return `${año}-${mes}-${dia} ${horas}:${minutos}:${segundos}`;
+                }
+
                 function configurarFechas()
                 {
                     // Obtiene la fecha actual
@@ -256,57 +270,6 @@
                     var from = $('#search_sales_states #from').val();
                     var to = $('#search_sales_states #to').val();
 
-                    if (user == "")
-                    {
-                        $('.notifications').empty();
-                        $('.notifications').append(
-                        `
-                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                Por favor, ingrese fecha el ID de agente
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                        `);
-
-                        return;
-                    }
-                    if (password == "")
-                    {
-                        $('.notifications').empty();
-                        $('.notifications').append(
-                        `
-                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                Por favor, ingrese la contrase&ntilde;a
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                        `);
-
-                        return;
-                    }
-                    if (from == "")
-                    {
-                        $('.notifications').empty();
-                        $('.notifications').append(
-                        `
-                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                Por favor, ingrese fecha "Desde"
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                        `);
-
-                        return;
-                    }
-                    if (to == "")
-                    {
-                        $('.notifications').empty();
-                        $('.notifications').append(
-                        `
-                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                Por favor, ingrese fecha "Desde"
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                        `);
-                        return;
-                    }
                     let data = {
                         user: user,
                         password: password,
