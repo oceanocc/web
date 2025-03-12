@@ -251,10 +251,10 @@
                 $('#search_sales_states').submit(function(e)
                 {
                     e.preventDefault();
-                    var user = $('#search_sales_states input[name=agent_id]').val();
-                    var password = $('#search_sales_states input[name=password]').val();
-                    var from = $('#search_sales_states input[name=from]').val();
-                    var to = $('#search_sales_states input[name=to]').val();
+                    var user = $('#search_sales_states #agent_id').val();
+                    var password = $('#search_sales_states #password').val();
+                    var from = $('#search_sales_states #from').val();
+                    var to = $('#search_sales_states #to').val();
 
                     if (user == "")
                     {
